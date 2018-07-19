@@ -222,6 +222,10 @@ func resourceArmKubernetesCluster() *schema.Resource {
 							Type:     schema.TypeString,
 							Required: true,
 							ForceNew: true,
+							ValidateFunc: validation.StringInSlice([]string{
+								string(containerservice.Azure),
+								string(containerservice.Kubenet),
+							}, true),
 						},
 
 						"service_cidr": {
