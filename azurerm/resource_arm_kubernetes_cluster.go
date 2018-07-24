@@ -226,13 +226,15 @@ func resourceArmKubernetesCluster() *schema.Resource {
 
 						"service_cidr": {
 							Type:     schema.TypeString,
-							Required: true,
+							Default:  "",
+							Optional: true,
 							ForceNew: true,
 						},
 
 						"dns_service_ip": {
 							Type:     schema.TypeString,
-							Required: true,
+							Default:  "",
+							Optional: true,
 							ForceNew: true,
 						},
 
@@ -245,7 +247,7 @@ func resourceArmKubernetesCluster() *schema.Resource {
 
 						"pod_cidr": {
 							Type:     schema.TypeString,
-							Default:  "10.244.0.0/24",
+							Default:  "",
 							Optional: true,
 							ForceNew: true,
 						},
