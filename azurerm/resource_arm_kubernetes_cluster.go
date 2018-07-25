@@ -228,6 +228,7 @@ func resourceArmKubernetesCluster() *schema.Resource {
 							Type:     schema.TypeString,
 							Default:  nil,
 							Optional: true,
+							Computed: true,
 							ForceNew: true,
 						},
 
@@ -235,6 +236,7 @@ func resourceArmKubernetesCluster() *schema.Resource {
 							Type:     schema.TypeString,
 							Default:  nil,
 							Optional: true,
+							Computed: true,
 							ForceNew: true,
 						},
 
@@ -242,6 +244,7 @@ func resourceArmKubernetesCluster() *schema.Resource {
 							Type:     schema.TypeString,
 							Optional: true,
 							Default:  nil,
+							Computed: true,
 							ForceNew: true,
 						},
 
@@ -249,6 +252,7 @@ func resourceArmKubernetesCluster() *schema.Resource {
 							Type:     schema.TypeString,
 							Default:  nil,
 							Optional: true,
+							Computed: true,
 							ForceNew: true,
 						},
 					},
@@ -659,11 +663,11 @@ func expandAzureRmKubernetesClusterNetworkProfile(d *schema.ResourceData) *conta
 	serviceCidr := config["service_cidr"].(string)
 
 	networkProfile := containerservice.NetworkProfile{
-		DNSServiceIP:     utils.String(dnsServiceIP),
-		DockerBridgeCidr: utils.String(dockerBridgeCidr),
+		DNSServiceIP:     utils.SafeStringPtr(dnsServiceIP),
+		DockerBridgeCidr: utils.SafeStringPtr(dockerBridgeCidr),
 		NetworkPlugin:    containerservice.NetworkPlugin(networkPlugin),
-		PodCidr:          utils.String(podCidr),
-		ServiceCidr:      utils.String(serviceCidr),
+		PodCidr:          utils.SafeStringPtr(podCidr),
+		ServiceCidr:      utils.SafeStringPtr(serviceCidr),
 	}
 
 	return &networkProfile

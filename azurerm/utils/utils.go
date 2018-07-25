@@ -15,3 +15,11 @@ func Int64(input int64) *int64 {
 func String(input string) *string {
 	return &input
 }
+
+func SafeStringPtr(input string) *string {
+	if input == "" {
+		return nil
+	} else {
+		return &input
+	}
+}
