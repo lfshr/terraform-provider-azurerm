@@ -122,8 +122,8 @@ func TestAccAzureRMKubernetesCluster_linuxProfile(t *testing.T) {
 					resource.TestCheckResourceAttrSet(resourceName, "kube_config.0.password"),
 					resource.TestCheckResourceAttrSet(resourceName, "agent_pool_profile.0.max_pods"),
 					resource.TestCheckResourceAttrSet(resourceName, "linux_profile.0.admin_username"),
-					resource.TestCheckResourceAttrSet(resourceName, "linux_profile.0.ssh_key.0.key_data")
-					resource.TestCheckResourceAttrSet(resourceName, "linux_profile.0.ssh_key.1.key_data")
+					resource.TestCheckResourceAttrSet(resourceName, "linux_profile.0.ssh_key.0.key_data"),
+					resource.TestCheckResourceAttrSet(resourceName, "linux_profile.0.ssh_key.1.key_data"),
 				),
 			},
 		},
